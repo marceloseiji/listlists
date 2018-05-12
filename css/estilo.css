@@ -46,6 +46,7 @@ body{
     color: #F2F0F0;
     text-transform: uppercase;
     padding: 5px;
+    margin: 15px 0 15px 0;
     border-bottom: solid 3px#F2F0F0;
     display: inline-block;
 }
@@ -62,21 +63,40 @@ body{
 }
 
 .background{
-    background-color: rgba(187,197,170, .5);  
-    
-    
+    background-color: rgba(187,197,170, .5);
 }
 
-.formulario-cadastro{
-    
-}
-
-.cadastro input{
+.formulario-cadastro input{
     padding: 5px;
+    margin-bottom: 15px;
+    width: 300px;
+    background-color: rgba(230,238,214, .8);
+    border: solid 2px black;
+    border-radius: 10px;
 }
 
-.cadastro label{
+
+.formulario-cadastro label{
     font-size: 23px;
+    color: #F2F0F0;
+}
+
+.formulario-cadastro button{
+    font-size: 20px;
+    margin-bottom: 15px;
+    width: 200px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 25px;
+    background-color: rgba(162,37,34, .9);
+    color: #E6EED6;
+}
+
+.formulario-cadastro button:hover{
+    background-color: #BBC5AA;
+    color: #130400;
+    transition: 1s;
+    border: 2px solid #A22522;
 }
 
 /* -- Formulário de Login -- */
@@ -91,13 +111,42 @@ body{
 
 }
 
-.login input{
+.formulario-login input{
+    color: black;
     padding: 5px;
+    margin-bottom: 15px;
+    width: 300px;
+    background-color: rgba(230,238,214, .8);
+    border: solid 2px black;
+    border-radius: 10px;
+    
 }
 
-.login label{
+.formulario-login label{
     font-size: 23px;
+    color: #F2F0F0;
+   
+    
 }
+
+.formulario-login button{
+    font-size: 20px;
+    margin-bottom: 15px;
+    width: 200px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 25px;
+    background-color: rgba(0,0,05, .8);
+    color: #E6EED6;
+}
+
+.formulario-login button:hover{
+    background-color: #BBC5AA;
+    color: #130400;
+    transition: 1s;
+    border: 2px solid #A22522;
+}
+
 
 /* -- Roda Pé -- */
 .roda-pe{
