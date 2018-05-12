@@ -35,14 +35,45 @@ body{
     padding: 5px 15px;
 }
 
-/* -- Roda Pé -- */
-.roda_pe{
-    background-color: #133C55;
-    padding: 40px 0;
+/* -- Main -- */
+.cadastro{
+    width: 65%;
+    float: left;
+    padding: 25px;
+    padding-right: 12.5px;
+}
+
+.login{
+    width: 35%;
+    float: left;
+    padding: 25px;
+    padding-left: 12.5px;
+
+}
+
+.principal {
     text-align: center;
 }
 
-.roda_pe p{
+.principal p{
+    font-size: 45px;
+    color: #F2F0F0;
+    text-transform: uppercase;
+    padding: 5px;
+    border-bottom: solid 3px#F2F0F0;
+    display: inline-block;
+}
+
+/* -- Roda Pé -- */
+.roda-pe{
+    background-color: #133C55;
+    padding: 40px 0;
+    text-align: center;
+    clear: both;
+}
+
+.roda-pe p{
     color: #E6EED6;
     font-size: 20px;
 }
+
