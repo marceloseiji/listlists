@@ -36,23 +36,9 @@ body{
 }
 
 /* -- Main -- */
-.cadastro{
-    width: 65%;
-    float: left;
-    padding: 25px;
-    padding-right: 12.5px;
-}
 
-.login{
-    width: 35%;
-    float: left;
-    padding: 25px;
-    padding-left: 12.5px;
-
-}
-
-.principal {
-    text-align: center;
+.principal{
+    
 }
 
 .principal p{
@@ -62,6 +48,55 @@ body{
     padding: 5px;
     border-bottom: solid 3px#F2F0F0;
     display: inline-block;
+}
+
+/* -- Formulário de Cadastro -- */
+
+.cadastro{
+    width: 65%;
+    float: left;
+    padding: 50px;
+    padding-right: 25px;
+    text-align: center;
+    
+}
+
+.background{
+    background-color: rgba(187,197,170, .5);  
+    
+    
+}
+
+.formulario-cadastro{
+    
+}
+
+.cadastro input{
+    padding: 5px;
+}
+
+.cadastro label{
+    font-size: 23px;
+}
+
+/* -- Formulário de Login -- */
+
+
+.login{
+    width: 35%;
+    float: left;
+    padding: 50px;
+    padding-left: 25px;
+    text-align: center;
+
+}
+
+.login input{
+    padding: 5px;
+}
+
+.login label{
+    font-size: 23px;
 }
 
 /* -- Roda Pé -- */
