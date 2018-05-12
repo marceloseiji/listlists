@@ -1,0 +1,48 @@
+/* -- Paletasa de Cores https://coolors.co/e6eed6-dde2c6-bbc5aa-a22522-e76f51 -- */
+
+
+/* -- Resetando o CSS -- */
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    border: none;
+    outline: none;
+    font-weight: 300;
+    box-sizing: border-box;
+}
+
+/* -- Body --*/
+body{
+    font-family: Roboto;
+    background-color: #E76F51;
+
+}
+
+/* -- Cabeçalho -- */
+.cabecalho{
+    background-color: #E6EED6;
+    padding: 40px 0;
+    text-align: center;
+    
+}
+.cabecalho h1{
+    color: #A22522;
+    font-size: 72px;
+    font: bold; 
+    border: solid 7px #A22522;
+    display: inline-block;
+    padding: 5px 15px;
+}
+
+/* -- Roda Pé -- */
+.roda_pe{
+    background-color: #133C55;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.roda_pe p{
+    color: #E6EED6;
+    font-size: 20px;
+}
