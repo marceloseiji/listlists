@@ -15,7 +15,7 @@
 /* -- Body --*/
 body{
     font-family: Roboto;
-    background-color: #E76F51;
+    background-color: E76F51;
 
 }
 
@@ -88,7 +88,7 @@ body{
     padding: 5px;
     border: 2px solid black;
     border-radius: 25px;
-    background-color: rgba(0,0,05, .8);
+    background-color: rgba(162,37,34, .9);
     color: #E6EED6;
 }
 
@@ -97,7 +97,6 @@ body{
     color: #130400;
     transition: 1s;
     border: 2px solid #A22522;
-
 }
 
 /* -- Formulário de Login -- */
@@ -162,8 +161,71 @@ body{
     font-size: 20px;
 }
 
-/*--Pagina de acesso--*/
+/*--Página de usuário--*/
 
-div#teste {
-    background-color: #333;
+.corpoUser {
+    width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    background-color: #E6EED6;
+    text-align: center;
+    border-radius: 5px;
 }
+.cabecalhoUser {
+    margin: auto;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #E6EED6;
+    text-align: center;
+    border-radius: 5px;
+}
+.listasUser {
+    width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    background-color: #cf9b7f;
+    text-align: center;
+    border-radius: 5px;
+}
+.listasNaLista {
+    width: 800px;
+    margin: auto;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #E6EED6;
+    text-align: center;
+    border-radius: 5px;
+}
+.textoTitulo {
+    color: #A22522;
+    font-size: 30px;
+    font-weight: 600;
+}
+.btn-lista {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #A22522;
+    padding: 20px 30px 20px 30px;
+    border-radius: 5px;
+}
+p2 {
+    color: #E6EED6;
+    font-size: 25px;
+    font-style: bold;
+}
+p3 {
+    color: #A22522;
+    font-size: 25px;
+    font-style: bold;
+}
+p4 {
+    color: #A22522;
+    font-size: 20px;
+}
+
