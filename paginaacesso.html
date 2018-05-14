@@ -7,18 +7,113 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
             crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/estilo.css">
+        <!--bootstrap 4.0-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
-        <title>List-Lists</title>
+        <!--bootstrap 4.0-->
+        <link rel="stylesheet" type="text/css" href="css/estilo.css">
+        <!--jQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title>Página do Usuário</title>
     </head>
 <body>
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-sm" id="teste">
-                <p1>Teste</p1>
+    <div class="corpoUser">
+    
+        <div class="cabecalhoUser">
+            <h1 class="textoTitulo">Listas do Usuário-x</h1>
+            <button type="button" class="btn-lista" data-toggle="modal" data-target="#criarListaModal" data-whatever="@getbootstrap"><p3>Criar Lista</p3></button>
+        </div>
+
+        <!-- Listas criadas pelo usuário -->
+        <div class="listasUser">
+            <p2>Listas Criadas</p2>
+            
+                <div class="listasNaLista">
+                    <p4>Lista de exemplo</p4>
+                </div>
+                <div class="listasNaLista">
+                    <p4>Lista de exemplo</p4>
+                </div>
+        </div>
+
+        <!-- Modal para a criação de lista-->
+        <div class="modal fade" id="criarListaModal" tabindex="-1" role="dialog" aria-labelledby="criarListaModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="criarListaModalLabel">Crie sua lista de itens</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="nome-lista" class="col-form-label">Nome da lista:</label>
+                      <input type="text" class="form-control" id="iptNomeLista">
+                    </div>
+                    <div class="form-group">
+                        <label for="data-evento" class="col-form-label">Data do evento:</label>
+                        <input type="date" class="form-control" id="iptDataEvento">
+                    </div>
+                    <div class="local-evento">
+                            <label for="hora-do-evento" class="col-form-label">Horário do evento:</label>
+                            <input type="time" class="form-control" id="iptHoraEvento">
+                    </div>
+                    <div class="local-evento">
+                        <label for="data-do-evento" class="col-form-label">Local do evento:</label>
+                        <input type="text" class="form-control" id="iptLocalEvento">
+                    </div>
+                    <div class="form-group">
+                      <label for="observacoes-evento" class="col-form-label">Observações sobre o evento:</label>
+                      <textarea class="form-control" id="textObservacoesEvento"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="btn-criarLista" onclick="criarLista()">Criar Lista!</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- Modal para a criação de lista-->
+
+        <!-- Listas que o usuário foi convidado-->
+        <div class="listasUser">
+            <p2>Listas Convidado</p2>
+
+            <div class="listasNaLista">
+                <p4>Lista de exemplo</p4>
+            </div>
+
+            <div class="listasNaLista">
+                <p4>Lista de exemplo</p4>
             </div>
         </div>
+        <!-- Listas que o usuário foi convidado-->
+
+        <!--Script do armazenamento das listas-->
+        <script>
+            var listasCriadas = [];
+            
+            function criarLista() {
+                var nomeLista = $("#iptNomeLista").val().replace(" ", "-");
+                var dataEvento = $("#iptDataEvento").val();
+                var horaEvento = $("#iptHoraEvento").val();
+                var localEvento = $("#iptLocalEvento").val();
+                var observacoesEvento = $("#textObservacoesEvento").val();
+
+                listasCriadas.push("var" + " lista_" + nomeLista + " =" + " {" + "objNomeLista: " + nomeLista + ", " + "objDataEvento: " + dataEvento + ", " + "objHora: " + horaEvento + ", " + "objLocalEvento: " + localEvento + ", " + "objObservacoes: " + observacoesEvento + "}");
+                console.log(listasCriadas[0]);
+            }
+        </script>
+        <!--Script do armazenamento das listas-->
     </div>
+
+ <!--javaScript para Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--javaScript para Bootstrap-->
 </body>
 </html>
