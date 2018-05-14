@@ -1,0 +1,16 @@
+Modelagem de dados ListLists
+
+
+Pessoa:
+nome
+email
+cofirmarsenha
+senha
+
+Itens:
+nome
+marca
+desrição
+quantidade
+unidade
+
