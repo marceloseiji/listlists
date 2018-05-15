@@ -4,8 +4,16 @@ Modelagem de dados ListLists
 Pessoa:
 nome
 email
-cofirmarsenha
 senha
+confirmar senha
+
+
+Listas:
+nome
+lugar
+data
+hora
+descrição
 
 Itens:
 nome
