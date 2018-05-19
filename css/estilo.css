@@ -196,8 +196,6 @@ body{
     width: 800px;
     margin: auto;
     margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     background-color: #E6EED6;
     text-align: center;
     border-radius: 5px;
@@ -227,5 +225,18 @@ p3 {
 p4 {
     color: #A22522;
     font-size: 20px;
+}
+ul#listaCriada {
+    color: #A22522;
+    font-size: 20px;
+    padding: 10px 10px 10px 10px;
+}
+#listaNova{
+    padding: .5px 366px .5px 366px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: #E6EED6;
+    text-align: center;
+    border-radius: 5px;
 }
 
