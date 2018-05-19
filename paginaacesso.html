@@ -25,14 +25,10 @@
 
         <!-- Listas criadas pelo usuário -->
         <div class="listasUser">
-            <p2>Listas Criadas</p2>
-            
-                <div class="listasNaLista">
-                    <p4>Lista de exemplo</p4>
-                </div>
-                <div class="listasNaLista">
-                    <p4>Lista de exemplo</p4>
-                </div>
+        <p2>Listas Criadas</p2>
+            <ul id="listaCriada">
+                    
+            </ul>
         </div>
 
         <!-- Modal para a criação de lista-->
@@ -97,7 +93,7 @@
             var listasCriadas = [];
             
             function criarLista() {
-                var nomeLista = $("#iptNomeLista").val().replace(" ", "-");
+                var nomeLista = $("#iptNomeLista").val().replace(/\ /g, "_");
                 var dataEvento = $("#iptDataEvento").val();
                 var horaEvento = $("#iptHoraEvento").val();
                 var localEvento = $("#iptLocalEvento").val();
@@ -105,7 +101,16 @@
 
                 listasCriadas.push("var" + " lista_" + nomeLista + " =" + " {" + "objNomeLista: " + nomeLista + ", " + "objDataEvento: " + dataEvento + ", " + "objHora: " + horaEvento + ", " + "objLocalEvento: " + localEvento + ", " + "objObservacoes: " + observacoesEvento + "}");
                 console.log(listasCriadas[0]);
+
+                guardarLista();
             }
+            
+            function guardarLista() {
+                nomeListaCriada = $("#iptNomeLista").val();
+                $("#listaCriada").append("<li id='listaNova'>" + nomeListaCriada + "</li>");
+            }
+
+            
         </script>
         <!--Script do armazenamento das listas-->
     </div>
