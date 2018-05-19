@@ -238,5 +238,6 @@ ul#listaCriada {
     background-color: #E6EED6;
     text-align: center;
     border-radius: 5px;
+    list-style-type: none;
 }
 
