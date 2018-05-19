@@ -67,7 +67,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id="btn-criarLista" onclick="criarLista()">Criar Lista!</button>
+                  <button type="button" class="btn btn-primary" id="btn-criarLista" data-dismiss="modal" onclick="criarLista()">Criar Lista!</button>
                 </div>
               </div>
             </div>
@@ -103,11 +103,20 @@
                 console.log(listasCriadas[0]);
 
                 guardarLista();
+                limparCampos();
             }
-            
+
             function guardarLista() {
                 nomeListaCriada = $("#iptNomeLista").val();
                 $("#listaCriada").append("<li id='listaNova'>" + nomeListaCriada + "</li>");
+            }
+
+            function limparCampos() {
+                document.getElementById("iptNomeLista").value = "";
+                document.getElementById("iptDataEvento").value = "";
+                document.getElementById("iptHoraEvento").value = "";
+                document.getElementById("iptLocalEvento").value = "";
+                document.getElementById("textObservacoesEvento").value = "";
             }
 
             
