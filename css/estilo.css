@@ -99,6 +99,21 @@ body{
     border: 2px solid #A22522;
 }
 
+.aviso{
+    
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    color: red;  
+    display: block;
+    position: relative;
+   
+    
+    
+
+    
+    
+}
+
 /* -- Formulário de Login -- */
 
 
