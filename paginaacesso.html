@@ -91,26 +91,41 @@
         <!--Script do armazenamento das listas-->
         <script>
             var listasCriadas = [];
+
             
+            //Função que armazena as informações da lista em var listasCriadas [];
             function criarLista() {
                 var nomeLista = $("#iptNomeLista").val().replace(/\ /g, "_");
                 var dataEvento = $("#iptDataEvento").val();
                 var horaEvento = $("#iptHoraEvento").val();
                 var localEvento = $("#iptLocalEvento").val();
                 var observacoesEvento = $("#textObservacoesEvento").val();
+                var localizador = listasCriadas.length;
 
-                listasCriadas.push("var" + " lista_" + nomeLista + " =" + " {" + "objNomeLista: " + nomeLista + ", " + "objDataEvento: " + dataEvento + ", " + "objHora: " + horaEvento + ", " + "objLocalEvento: " + localEvento + ", " + "objObservacoes: " + observacoesEvento + "}");
-                console.log(listasCriadas[0]);
+                listasCriadas.push({ "objNomeLista":  nomeLista,
+                                     "objDataEvento": dataEvento,
+                                     "objHoraEvento": horaEvento,
+                                     "objLocalEvento": localEvento,
+                                     "objObservacoes": observacoesEvento,
+                                     "objLocalizador": localizador,
+                                     });
 
-                guardarLista();
+                console.log(listasCriadas);
+
+                guardarLista(localizador);
                 limparCampos();
             }
 
-            function guardarLista() {
-                nomeListaCriada = $("#iptNomeLista").val();
-                $("#listaCriada").append("<li id='listaNova'>" + nomeListaCriada + "</li>");
+            //Funcção que coloca a lista na tela e cria o <a> que ativa o modal da lista por (data-target="#billingAddress")
+            function guardarLista(xLoc) {
+                //essa porra de algoritmo cria o localizador para o modal mostrar a lista certa
+                localizador = '<a ' + "href='#'" + 'onclick=abrirLista' + '(' + xLoc + ')' + '>';
+
+                //essa parte usa o append pra juntar localizador com o resto da lista
+                $("#listaCriada").append(localizador + "<li id='listaNova'>" + listasCriadas[xLoc].objNomeLista.replace(/\_/g, " ") + "</li>" + "</a>");
             }
 
+            //Limpa os campos do modal da criação de lista
             function limparCampos() {
                 document.getElementById("iptNomeLista").value = "";
                 document.getElementById("iptDataEvento").value = "";
@@ -118,10 +133,53 @@
                 document.getElementById("iptLocalEvento").value = "";
                 document.getElementById("textObservacoesEvento").value = "";
             }
-
             
+            //Abre o modal da lista e coloca os elementos da lista no modal pelo .append
+            function abrirLista(kLoc) {
+                loc = kLoc;
+                var nomeLista = listasCriadas[loc].objNomeLista.replace(/\_/g, " ");
+                var dataEvento = listasCriadas[loc].objDataEvento;
+                var horaEvento = listasCriadas[loc].objHoraEvento;
+                var localEvento = listasCriadas[loc].objLocalEvento;
+                var observacoesEvento = listasCriadas[loc].objObservacoes;
+
+                //faz abrir o modal
+                $('#abrirModalLista').modal(loc);
+
+                //coloca os elementos da lista no modal
+                $("#listaModal").append(nomeLista + '</br>');
+                $("#listaModal").append("Dia: " + dataEvento + '</br>');
+                $("#listaModal").append("Horário: " + horaEvento + '</br>');
+                $("#listaModal").append("Local: " + localEvento + '</br>');
+                $("#listaModal").append("Observações: " + observacoesEvento + '</br>');
+                
+                //apaga as informações do modal que foi mostrado
+                $("#abrirModalLista").on("hidden.bs.modal", function() {
+                    $("#listaModal").empty();
+                });
+            }
         </script>
-        <!--Script do armazenamento das listas-->
+        
+        <div class="modal fade" id="abrirModalLista" tabindex="-1" role="dialog" aria-labelledby="modalNomeLista" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalNomeLista">Nome da lista aqui</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="listaModal">
+                       
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
  <!--javaScript para Bootstrap-->
