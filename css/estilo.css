@@ -240,4 +240,12 @@ ul#listaCriada {
     border-radius: 5px;
     list-style-type: none;
 }
+#modalNomeLista {
+    margin: auto;
+}
+
+/*Altera a cor do modal*/
+.modal-content#modalAdcItem {
+    background-color: #E6EED6;
+}
 
