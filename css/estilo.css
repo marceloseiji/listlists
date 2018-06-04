@@ -1,16 +1,4 @@
-/* -- Paletasa de Cores https://coolors.co/e6eed6-dde2c6-bbc5aa-a22522-e76f51 -- */
-
-
-/* -- Resetando o CSS -- */
-* {
-    margin: 0;
-    padding: 0;
-    font-size: 100%;
-    border: none;
-    outline: none;
-    font-weight: 300;
-    box-sizing: border-box;
-}
+/* -- Paleta de Cores https://coolors.co/e6eed6-dde2c6-bbc5aa-a22522-e76f51 -- */
 
 /* -- Body --*/
 body{
@@ -226,12 +214,12 @@ p4 {
     color: #A22522;
     font-size: 20px;
 }
-ul#listaCriada {
-    color: #A22522;
-    font-size: 20px;
+ul#listaCriada {    
     padding: 10px 10px 10px 10px;
 }
-#listaNova{
+li.listasMae{
+    font-size: 22px;
+    color: #A22522;
     padding: .5px 366px .5px 366px;
     margin: auto;
     margin-top: 10px;
@@ -241,6 +229,12 @@ ul#listaCriada {
     list-style-type: none;
 }
 #modalNomeLista {
+    margin: auto;
+}
+#tabelaItens {
+    margin: auto;
+}
+#tabelaItens th {
     margin: auto;
 }
 
