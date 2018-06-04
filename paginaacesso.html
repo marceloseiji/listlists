@@ -20,14 +20,14 @@
     
         <div class="cabecalhoUser">
             <h1 class="textoTitulo">Listas do Usuário-x</h1>
-            <button type="button" class="btn-lista" data-toggle="modal" data-target="#criarListaModal" data-whatever="@getbootstrap"><p3>Criar Lista</p3></button>
+            <button type="button" class="btn-lista" data-toggle="modal" data-target="#modalListaFilha" data-whatever="@getbootstrap"><p3>Criar Lista</p3></button>
         </div>
 
         <!-- Listas criadas pelo usuário -->
         <div class="listasUser">
         <p2>Listas Criadas</p2>
             <ul id="listaCriada">
-                    
+            <!--Nesta ul as listas que forem criadas serão colocadas-->
             </ul>
         </div>
         <!-- Listas criadas pelo usuário -->
@@ -46,12 +46,12 @@
         </div>
         <!-- Listas que o usuário foi convidado-->
 
-        <!-- Modal para a criação de lista-->
-        <div class="modal fade" id="criarListaModal" tabindex="-1" role="dialog" aria-labelledby="criarListaModalLabel" aria-hidden="true">
+        <!-- Modal para a criação de lista (Lista mãe)-->
+        <div class="modal fade" id="modalListaFilha" tabindex="-1" role="dialog" aria-labelledby="modalListaFilhaLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="criarListaModalLabel">Crie sua lista de itens</h5>
+                  <h5 class="modal-title" id="modalListaFilhaLabel">Crie sua lista de itens</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -82,121 +82,14 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" id="btn-criarLista" onclick="criarLista()">Criar Lista!</button>
+                  <button type="submit" class="btn btn-primary" id="btn-criarLista" onclick="validarLista()">Criar Lista!</button>
                 </div>
               </div>
             </div>
           </div>
         <!-- Modal para a criação de lista-->
-        
-        
-        <!--Script do armazenamento das listas-->
-        <script>
-            var listasCriadas = [];
-            
-            //Função que armazena as informações da lista em var listasCriadas [];
-            function criarLista() {
-                nomeLista = $("#iptNomeLista").val().replace(/\ /g, "_");
-                dataEvento = $("#iptDataEvento").val();
-                horaEvento = $("#iptHoraEvento").val();
-                localEvento = $("#iptLocalEvento").val();
-                observacoesEvento = $("#textObservacoesEvento").val();
-                localizador = listasCriadas.length;
-
-                //código que verifica se os campos foram preenchidos
-                if ((nomeLista == 0) || (dataEvento == 0) || (horaEvento == 0) || (localEvento == 0)) {
-                    alert ("Favor preencher os campos obrigatórios.");                    
-                        if (nomeLista == "") {
-                        $("#iptNomeLista").css('border', '1px solid red');
-                        } else if (!nomeLista == "") {
-                            $("#iptNomeLista").css('border', '1px solid #00ff55');
-                            }
-
-                        if (dataEvento == "") {
-                        $("#iptDataEvento").css('border', '1px solid red');
-                        } else if (!dataEvento == "") {
-                            $("#iptDataEvento").css('border', '1px solid #00ff55');
-                            }
-
-                        if (horaEvento == "") {
-                        $("#iptHoraEvento").css('border', '1px solid red');
-                            } else if (!horaEvento == "") {
-                            $("#iptHoraEvento").css('border', '1px solid #00ff55');
-                            }
-                        
-                        if (localEvento == "") {
-                        $("#iptLocalEvento").css('border', '1px solid red');
-                            } else if (!localEvento == "") {
-                            $("#iptLocalEvento").css('border', '1px solid #00ff55');
-                            }
-                return;
-                }
-             
-                listasCriadas.push({ "objNomeLista":  nomeLista,
-                                     "objDataEvento": dataEvento,
-                                     "objHoraEvento": horaEvento,
-                                     "objLocalEvento": localEvento,
-                                     "objObservacoes": observacoesEvento,
-                                     "objLocalizador": localizador,
-                                     });
-
-                console.log(listasCriadas);
-                guardarLista(localizador);
-                limparCampos();
-                $("#criarListaModal").modal('hide');
-            }
-
-            //Funcção que coloca a lista na tela e cria o <a> que ativa o modal da lista por (data-target="#billingAddress")
-            function guardarLista(xLoc) {
-                //essa porra de codigo cria o localizador para o modal mostrar a lista certa
-                localizador = '<a ' + "href='#'" + 'onclick=abrirLista' + '(' + xLoc + ')' + '>';
-
-                //essa parte usa o append pra juntar localizador com o resto da lista
-                $("#listaCriada").append(localizador + "<li id='listaNova'>" + listasCriadas[xLoc].objNomeLista.replace(/\_/g, " ") + "</li>" + "</a>");
-            }
-
-            //Limpa os campos do modal da criação de lista
-            function limparCampos() {
-                document.getElementById("iptNomeLista").value = "";
-                document.getElementById("iptDataEvento").value = "";
-                document.getElementById("iptHoraEvento").value = "";
-                document.getElementById("iptLocalEvento").value = "";
-                document.getElementById("textObservacoesEvento").value = "";
-            }
-            
-            //Abre o modal da lista e coloca os elementos da lista no modal pelo .append
-            function abrirLista(kLoc) {
-                loc = kLoc;
-                var nomeLista = listasCriadas[loc].objNomeLista.replace(/\_/g, " ");
-                var dataEvento = listasCriadas[loc].objDataEvento;
-                var horaEvento = listasCriadas[loc].objHoraEvento;
-                var localEvento = listasCriadas[loc].objLocalEvento;
-                var observacoesEvento = listasCriadas[loc].objObservacoes;
-
-                //faz abrir o modal
-                $('#abrirModalLista').modal(loc);
-
-                //coloca os elementos da lista no modal
-                $("#listaModal").append(nomeLista + '</br>');
-                $("#listaModal").append("Dia: " + dataEvento + '</br>');
-                $("#listaModal").append("Horário: " + horaEvento + '</br>');
-                $("#listaModal").append("Local: " + localEvento + '</br>');
-                $("#listaModal").append("Observações: " + observacoesEvento + '</br>');
-                document.getElementById("modalNomeLista").innerHTML = nomeLista;
-                
-                //apaga as informações do modal que foi mostrado
-                $("#abrirModalLista").on("hidden.bs.modal", function() {
-                    $("#listaModal").empty();
-                });
-            }
-
-            //Abre o modal de aciionar item na lista
-            function adcItem () {
-            $('#modalAdcItem').modal();
-            }
-        </script>
-                
-        <!--modal da lista que foi criada -->
+                  
+        <!--modal da lista filha -->
         <div class="modal fade" id="abrirModalLista" tabindex="-1" role="dialog" aria-labelledby="modalNomeLista" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -204,18 +97,48 @@
                         <h5 class="modal-title" id="modalNomeLista">Nome da lista aqui</h5>
                         </button>
                     </div>
-                    <div class="modal-body" id="listaModal">
-                       
+                    <div class="modal-body" id="listaModal"><!--Aqui serão colocadas as informações da lista filha-->
+                    
+                    </div>
+
+
+                    <div class="modal-body" id="listaItens"><!--Aqui serão colocadas os itens da lista-->
+
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" onclick="deletarLista()">Excluir Lista</button>
                         <button type="button" class="btn btn-info" onclick="adcItem()">Adicionar Item</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
+        <!--modal da lista filha -->
 
-        <!--modal para adicionar itens na lista -->
+        <!-- Modal para deletar a lista-->
+        <div class="modal fade" id="modalExcluirLista" tabindex="-1" role="dialog" aria-labelledby="modalExcluirListaLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalExcluirListaLabel">Deseja deletar essa lista?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                            <button type="button" onclick="confirmaExcluir()" class="btn btn-success">Excluir</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- Modal para deletar a lista-->
+
+        <!--Modal para adicionar itens na Lista Filha -->
         <div class="modal fade" id="modalAdcItem" tabindex="-1" role="dialog" aria-labelledby="modalAdcItem" aria-hidden="true">
                 <div class="modal-dialog modal-md" role="document">
                     <div class="modal-content" id="modalAdcItem">
@@ -237,7 +160,7 @@
                                                 <label for="nome-lista" class="col-form-label">Quantidade:</label>
                                             </div>
                                         </div>
-
+                                        
                                         <div class="row">
                                             <div class="col-md-6">                                              
                                                 <input type="number" class="form-control" id="adcQuantidade">
@@ -245,10 +168,10 @@
 
                                             <div class="col-md-6">
                                                 <select type="date" class="form-control" id="adcUnidade">
-                                                    <option value="unidade">Un</option>
-                                                    <option value="gramas">g</option>
-                                                    <option value="quilo">Kg</option>
-                                                    <option value="caixas">Cx</option>
+                                                    <option value="Un">Unindade(s)</option>
+                                                    <option value="g">Gramas</option>
+                                                    <option value="Kg">Quilo(s)</option>
+                                                    <option value="Cx">Caixa(s)</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -259,19 +182,263 @@
                                     <label for="nome-lista" class="col-form-label">Marca:</label>
                                     <input type="text" class="form-control" id="adcMarca">
                                 </div>
+                                <div class="form-group">
+                                    <label for="nome-lista" class="col-form-label">Encarregado:</label>
+                                    <input type="text" class="form-control" id="adcResp">
+                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" onclick="adcItem()">Pronto!</button>
+                            <button type="button" class="btn btn-success" onclick="criarNovo()">Pronto!</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!--Modal de Item adicionado com sucesso-->
+            <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="modaladdItem" aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content" id="modaladdItem">
+                        <div class="modal-header">
+                      <h5 class="modal-title" id="">Item adicionado com sucesso</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Abra a lista novamente para atualizar.
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" data-dismiss="modal">Ok!</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Modal de Item adicionado com sucesso-->
+
     </div>
 
- <!--javaScript para Bootstrap-->
+
+   <!--Script do armazenamento das Listas mãe-->
+   <script>
+    var listasCriadas = {}; //Objeto que armazenas as listas filhas (Que também são objetos)
+    
+    function validarLista() {
+        nomeLista = $("#iptNomeLista").val().replace(/\ /g, "_");
+        dataEvento = $("#iptDataEvento").val();
+        horaEvento = $("#iptHoraEvento").val();
+        localEvento = $("#iptLocalEvento").val();
+        observacoesEvento = $("#textObservacoesEvento").val();
+        itensLista = {};
+
+        //código que verifica se os campos foram preenchidos, se sim ele chama a função criarLista();
+        if ((nomeLista == "") || (dataEvento == "") || (horaEvento == "") || (localEvento == "")) {
+        alert ("Favor preencher os campos obrigatórios.");                    
+            if (nomeLista == "") {
+            $("#iptNomeLista").css('border', '1px solid red');
+            } else if (!nomeLista == "") {
+                $("#iptNomeLista").css('border', '1px solid #00ff55');
+                }
+
+            if (dataEvento == "") {
+            $("#iptDataEvento").css('border', '1px solid red');
+            } else if (!dataEvento == "") {
+                $("#iptDataEvento").css('border', '1px solid #00ff55');
+                }
+
+            if (horaEvento == "") {
+            $("#iptHoraEvento").css('border', '1px solid red');
+                } else if (!horaEvento == "") {
+                $("#iptHoraEvento").css('border', '1px solid #00ff55');
+                }
+            
+            if (localEvento == "") {
+            $("#iptLocalEvento").css('border', '1px solid red');
+                } else if (!localEvento == "") {
+                $("#iptLocalEvento").css('border', '1px solid #00ff55');
+                }
+        return;
+        }
+        criarLista();
+    }
+    //Função que cria base do objeto lista mãe
+    function baseLista() {
+        this.nomeLista = $("#iptNomeLista").val().replace(/\ /g, "_");
+        this.dataEvento = $("#iptDataEvento").val();
+        this.horaEvento = $("#iptHoraEvento").val();
+        this.localEvento = $("#iptLocalEvento").val();
+        this.observacoesEvento = $("#textObservacoesEvento").val();
+        this.itensLista = []; 
+    }
+    //Função que cria base do objeto lista mãe
+
+
+    //Função que cria o objeto na lista mãe
+    function criarLista(nomeLista, dataEvento, horaEvento, localEvento, observacoesEvento) {
+
+        var objLista = new baseLista (nomeLista, dataEvento, horaEvento, localEvento, observacoesEvento); //Variável que é jogada para o objeto listasCriadas = {}
+
+        objValLista = $("#iptNomeLista").val().replace(/\ /g, "_"); //Variável que cria o nome do objeto dentro do objeto listasCriadas = {}
+        listasCriadas[objValLista] = objLista; // Cria o ojeto dentro de listasCriadas = {}
+        guardarLista(objValLista); // Chama a função que coloca a lista na tela
+        limparCampos();
+        $("#modalListaFilha").modal('hide'); //Fecha o modal depois da lista ser colocada na tela
+    }
+    //Função que cria o objeto na lista mãe
+
+
+    //Função que coloca a Lista mãe na tela e cria o <a> que ativa o modal da lista filha
+    function guardarLista(objValLista) {       
+        localizador = '<a ' + "href='#'" + 'onclick=abrirLista' + '(' + '"' + objValLista + '"' + ')' + '>'; //essa porra de codigo cria o localizador para o modal mostrar a lista certa     
+        $("#listaCriada").append(localizador + '<li class="listasMae" id= "listaNova_' + objValLista + '"' + '>' + listasCriadas[objValLista].nomeLista.replace(/\_/g, " ") + "</li>" + "</a>"); //essa parte usa o append pra juntar localizador com o resto da lista
+    }
+    //Função que coloca a Lista mãe na tela e cria o <a> que ativa o modal da lista filha
+
+
+    //Limpa os campos do modal da criação de lista
+    function limparCampos() {
+        document.getElementById("iptNomeLista").value = "";
+        document.getElementById("iptDataEvento").value = "";
+        document.getElementById("iptHoraEvento").value = "";
+        document.getElementById("iptLocalEvento").value = "";
+        document.getElementById("textObservacoesEvento").value = "";
+    }
+    //Limpa os campos do modal da criação de lista
+
+    function deletarLista() {
+        $('#modalExcluirLista').modal(); //Faz abrir o modal de decisão de deletar lista
+    }
+    function confirmaExcluir() {
+        var varDel = listasCriadas[modalNomeLista.textContent.replace(/\ /g, "_")].nomeLista; //Coloca o nome da lista na varDel para identificar a lista a deletar;
+        var del = "#" + "listaNova_" + varDel;
+        $(del).remove();
+        
+        delete listasCriadas[varDel];
+
+        alert ("Sua lista foi excluída");
+        $('#modalExcluirLista').modal("hide");
+        $('#abrirModalLista').modal("hide");
+    }
+
+</script>
+<!--Script do armazenamento das Listas mãe-->
+
+
+<!--<script>
+    function atualizaLista() {
+        $("#abrirModalLista").modal('hide');
+        abrirLista(listasCriadas[modalNomeLista.textContent].nomeLista);
+    }
+</script> -->
+
+
+<!--Script da lista filha-->
+<script>
+    //Abre o modal da lista filha e coloca os elementos no modal pelo .append
+    function abrirLista(x) {
+    xNom = x;
+    var nomeLista = listasCriadas[xNom].nomeLista;
+    var dataEvento = listasCriadas[xNom].dataEvento;
+    var horaEvento = listasCriadas[xNom].horaEvento;
+    var localEvento = listasCriadas[xNom].localEvento;
+    var observacoesEvento = listasCriadas[xNom].observacoesEvento;
+
+    $('#abrirModalLista').modal(); //Faz abrir o modal
+
+    //Coloca os elementos da lista Mãe no modal
+    $("#listaModal").append("Dia: " + dataEvento + '</br>');
+    $("#listaModal").append("Horário: " + horaEvento + '</br>');
+    $("#listaModal").append("Local: " + localEvento + '</br>');
+    $("#listaModal").append("Observações: " + observacoesEvento + '</br>');
+    document.getElementById("modalNomeLista").innerHTML = nomeLista.replace(/\_/g, " ");
+    
+    colocaItemLista(nomeLista);
+
+    //Apaga as informações do modal que foi mostrado
+    $("#abrirModalLista").on("hidden.bs.modal", function() {
+        $("#listaModal").empty();
+    });
+
+    //Apaga as informações do modal que foi mostrado
+    $("#abrirModalLista").on("hidden.bs.modal", function() {
+        $("#listaItens").empty();
+    });
+    }
+
+    //Abre o modal de adicionar item na lista filha
+    function adcItem () {
+    $('#modalAdcItem').modal();
+    }
+    
+</script>
+<!--Script da lista filha-->
+
+
+<!--Adiciona itens na lista filha atravéz do botão do modal para adicionar itens na lista filha, ativa a função ()-->
+<script>
+
+    function criarNovo() { //Cria o item (array de arrays) - ["Item: x", "Quantidade: x", "Un: x", "Marca: x"]
+        var produto = [];
+        var i = listasCriadas[modalNomeLista.textContent.replace(/\ /g, "_")].itensLista;
+
+        itemNome = $("#adcItem").val();
+        itemQuant = $("#adcQuantidade").val();
+        itemUni = $("#adcUnidade").val();
+        itemMarca = $("#adcMarca").val();
+        itemResp = $("#adcResp").val();
+
+        produto.push(itemNome);
+        produto.push(itemQuant);
+        produto.push(itemUni);
+        produto.push(itemMarca);
+        produto.push(itemResp);
+        i.push(produto);
+         
+        btnDel = '<button class="btn btn-danger" onclick=delItem(' + '"' + itemNome + '"' + ")" + '>' + 'x' + '</button>';
+        
+        $("#modalAdcItem").modal('hide'); //Fecha o modal depois do item ser colocado na lista
+        $("#addItem").modal();
+        limpaItem();
+    }
+
+    function colocaItemLista(nomeLista){
+        this.y = nomeLista;
+        var table = '<table id="tabelaItens" class="table table-bordered">';
+        var tHead = '<thead>';
+        var tBody = '<tBody>';
+        var tr = '<tr>';
+        var th = '<th scope="row" id="thTabela">';
+        var td = '<td>';
+        $("#listaItens").append(table + tHead + '<tr> <th scope="col">Item</th> <th scope="col">Quant.</th> <th scope="col">Un</th> <th scope="col">Marca</th> <th scope="col">Responsável</th> </tr>');
+
+        for (let indexP = 0; indexP < listasCriadas[this.y].itensLista.length; indexP++) {
+            $("#tabelaItens").append(tBody + tr);
+
+            for (let indexI = 0; indexI < listasCriadas[this.y].itensLista[indexP].length; indexI++) {
+                $("#tabelaItens").append(td + listasCriadas[this.y].itensLista[indexP][indexI]);
+            }
+        }
+    }
+
+    function limpaItem() {
+        document.getElementById("adcItem").value = "";
+        document.getElementById("adcQuantidade").value = "";
+        document.getElementById("adcUnidade").value = "";
+        document.getElementById("adcMarca").value = "";
+    }
+    
+    function delItem(x) {
+        del = x;
+        delId = "#";
+        $(delId + del).remove();
+        delete listasCriadas[modalNomeLista.textContent].itensLista[del];
+    }
+    
+</script>
+<!--Adiciona itens na lista filha atravéz do botão do modal para adicionar itens na lista filha, ativa a função ()-->
+
+<!--javaScript para Bootstrap-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
