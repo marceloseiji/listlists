@@ -1,22 +1,9 @@
-/* -- Paletasa de Cores https://coolors.co/e6eed6-dde2c6-bbc5aa-a22522-e76f51 -- */
-
-
-/* -- Resetando o CSS -- */
-* {
-    margin: 0;
-    padding: 0;
-    font-size: 100%;
-    border: none;
-    outline: none;
-    font-weight: 300;
-    box-sizing: border-box;
-}
+/* -- Paleta de Cores https://coolors.co/e6eed6-dde2c6-bbc5aa-a22522-e76f51 -- */
 
 /* -- Body --*/
 body{
     font-family: Roboto;
     background-color: E76F51;
-
 }
 
 /* -- Cabeçalho -- */
@@ -37,17 +24,12 @@ body{
 
 /* -- Main -- */
 
-.principal{
-    
-}
-
 .principal p{
     font-size: 45px;
-    color: #F2F0F0;
+    color: #E76F51;
     text-transform: uppercase;
     padding: 5px;
     margin: 15px 0 15px 0;
-    border-bottom: solid 3px#F2F0F0;
     display: inline-block;
 }
 
@@ -151,9 +133,11 @@ body{
 /* -- Roda Pé -- */
 .roda-pe{
     background-color: #133C55;
-    padding: 40px 0;
+    padding: 40px;
     text-align: center;
-    clear: both;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
 }
 
 .roda-pe p{
@@ -164,23 +148,16 @@ body{
 /*--Página de usuário--*/
 
 .corpoUser {
-    width: 1200px;
     margin: auto;
-    margin-top: 50px;
-    padding-top: 10px;
-    padding-bottom: 50px;
-    background-color: #E6EED6;
+    background-color: #E76F51;
     text-align: center;
-    border-radius: 5px;
+    padding-bottom: 120px;
 }
 .cabecalhoUser {
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin: auto;
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #E6EED6;
     text-align: center;
-    border-radius: 5px;
 }
 .listasUser {
     width: 1000px;
@@ -191,9 +168,23 @@ body{
     background-color: #cf9b7f;
     text-align: center;
     border-radius: 5px;
+    border: 2px solid black;
 }
+.listasConvidado {
+    width: 1000px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    background-color: #cf9b7f;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
 .listasNaLista {
-    width: 800px;
+    
     margin: auto;
     margin-top: 10px;
     background-color: #E6EED6;
@@ -201,16 +192,23 @@ body{
     border-radius: 5px;
 }
 .textoTitulo {
-    color: #A22522;
+    color: #E6EED6;
     font-size: 30px;
     font-weight: 600;
 }
 .btn-lista {
     margin-top: 20px;
-    font-size: 20px;
-    color: #A22522;
+    font-size: 25px;
+    background-color: rgba(162,37,34);
+    color: #E6EED6;
     padding: 20px 30px 20px 30px;
+    border: 3px solid black;
     border-radius: 5px;
+    transition: .5s;
+}
+.btn-lista:hover{
+    background-color: #E6EED6;
+    color: #130400;
 }
 p2 {
     color: #E6EED6;
@@ -226,13 +224,13 @@ p4 {
     color: #A22522;
     font-size: 20px;
 }
-ul#listaCriada {
-    color: #A22522;
-    font-size: 20px;
+ul#listaCriada {    
     padding: 10px 10px 10px 10px;
 }
-#listaNova{
-    padding: .5px 366px .5px 366px;
+li.listasMae{
+    font-size: 22px;
+    color: #A22522;
+    padding: .5px 0px .5px 0px;
     margin: auto;
     margin-top: 10px;
     background-color: #E6EED6;
@@ -241,6 +239,12 @@ ul#listaCriada {
     list-style-type: none;
 }
 #modalNomeLista {
+    margin: auto;
+}
+#tabelaItens {
+    margin: auto;
+}
+#tabelaItens th {
     margin: auto;
 }
 
