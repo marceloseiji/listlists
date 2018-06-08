@@ -15,22 +15,23 @@
 /* -- Body --*/
 body{
     font-family: Roboto;
-    background-color: #E76F51;
+    background-image: url("../img/bg-lista.jpg")
 
 }
 
 /* -- Cabeçalho -- */
 .cabecalho{
-    background-color: #E6EED6;
+    background-color: rgba(39, 41, 36, 0.8);
     padding: 40px 0;
     text-align: center;
+    box-shadow: #000 0px 4px 10px;
     
 }
 .cabecalho h1{
-    color: #A22522;
+    color: #fff;
     font-size: 72px;
     font: bold; 
-    border: solid 7px #A22522;
+    border: solid 7px #fff;
     display: inline-block;
     padding: 5px 15px;
 }
@@ -38,7 +39,7 @@ body{
 /* -- Main -- */
 
 .principal{
-    
+        
 }
 
 .principal p{
@@ -47,7 +48,7 @@ body{
     text-transform: uppercase;
     padding: 5px;
     margin: 15px 0 15px 0;
-    border-bottom: solid 3px#F2F0F0;
+    border: solid 3px#F2F0F0;
     display: inline-block;
 }
 
@@ -59,20 +60,20 @@ body{
     padding: 50px;
     padding-right: 25px;
     text-align: center;
-    
 }
 
 .background{
-    background-color: rgba(187,197,170, .5);
+    background-color: rgba(39, 41, 36, 0.6);
+    box-shadow: #000 4px 4px 10px;
 }
 
 .formulario-cadastro input{
     padding: 5px;
     margin-bottom: 15px;
     width: 300px;
-    background-color: rgba(230,238,214, .8);
-    border: solid 2px black;
-    border-radius: 10px;
+    border-bottom: solid 2px #fff;
+    background: none;
+    color: #fff;
 }
 
 
@@ -87,31 +88,22 @@ body{
     width: 200px;
     padding: 5px;
     border: 2px solid black;
-    border-radius: 25px;
-    background-color: rgba(162,37,34, .9);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #E6EED6;
 }
 
 .formulario-cadastro button:hover{
-    background-color: #BBC5AA;
-    color: #130400;
-    transition: 1s;
-    border: 2px solid #A22522;
+    background-color: rgba(0, 0, 0, 0.8);;
+
+
 }
 
 .aviso{
     
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 14px;
-    color: red;  
+    font-size: 14px; 
     display: block;
     position: relative;
-   
-    
-    
-
-    
-    
 }
 
 /* -- Formulário de Login -- */
@@ -127,14 +119,12 @@ body{
 }
 
 .formulario-login input{
-    color: black;
+    color: #fff;
     padding: 5px;
     margin-bottom: 15px;
     width: 300px;
-    background-color: rgba(230,238,214, .8);
-    border: solid 2px black;
-    border-radius: 10px;
-    
+    background: none;
+    border-bottom: solid 2px #fff;
 }
 
 .formulario-login label{
@@ -150,25 +140,22 @@ body{
     width: 200px;
     padding: 5px;
     border: 2px solid black;
-    border-radius: 25px;
-    background-color: rgba(0,0,05, .8);
+    background-color: rgba(0, 0, 0, 0.5);
     color: #E6EED6;
 }
 
 .formulario-login button:hover{
-    background-color: #BBC5AA;
-    color: #130400;
-    transition: 1s;
-    border: 2px solid #A22522;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 
 /* -- Roda Pé -- */
 .roda-pe{
-    background-color: #133C55;
+    background-color: rgba(39, 41, 36, .9);
     padding: 40px 0;
     text-align: center;
     clear: both;
+    border-top: black 3px rgba(0, 0, 0, 1);
 }
 
 .roda-pe p{

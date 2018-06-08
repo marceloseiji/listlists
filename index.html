@@ -18,8 +18,6 @@
 
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
-    <script language="JavaScript" src="javascript/funcoes.js"></script>
-
     <title>List-Lists</title>
 
 </head>
@@ -38,24 +36,23 @@
                 <form class="formulario-cadastro" id="fmrCadastro">
                     <!-- Nome (cadastro)-->
                     <label for="txtNome">Nome</label>
-
                     <div class="aviso" id="avisoNome">
-                            <span></span>
-                        </div>
+                        <span></span>
+                    </div>
                     <input type="text" name="nome" id="txtNome" placeholder="Informe seu Nome" required>
                     <br>
 
                     <!-- Email (cadastro) -->
                     <label for="txtEmail">E-mail</label>
-                    <div class="aviso" id="aviso">
+                    <div class="aviso" id="avisoEmail">
                         <span></span>
                     </div>
-                    <input type="email" id="txtEmail" placeholder="Informe seu E-mail">
+                    <input type="text" id="txtEmail" placeholder="Informe seu E-mail"/>
                     <br>
 
                     <!-- Senha (cadastro)-->
                     <label for="txtSenha">Senha</label>
-                    <div class="aviso" id="aviso">
+                    <div class="aviso" id="avisoSenha">
                         <span></span>
                     </div>
                     <input type="password" id="txtSenha" placeholder="Informe seu Senha" required>
@@ -63,7 +60,7 @@
 
                     <!-- Confirmar Senha (cadastro)-->
                     <label for="txtConfirmarSenha">Confirmar Senha</label>
-                    <div class="aviso" id="aviso">
+                    <div class="aviso" id="avisoConfirmarSenha">
                         <span></span>
                     </div>
                     <input type="password" id="txtConfirmarSenha" placeholder="Informe sua Senha Novamente" required>
@@ -101,6 +98,7 @@
     </footer>
 
 
+    <script language="JavaScript" src="javascript/funcoes.js"></script>
 </body>
 
 </html>
