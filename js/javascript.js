@@ -1,5 +1,6 @@
 //Script do armazenamento das Listas mãe
 
+
     var listasCriadas = {}; //Objeto que armazenas as listas filhas (Que também são objetos)
     
     function validarLista() {
