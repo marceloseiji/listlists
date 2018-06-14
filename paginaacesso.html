@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <!--bootstrap 4.0-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <!--bootstrap 4.0-->
+    <link rel="stylesheet" type="text/css" href="css/estiloPaginaAcesso.css">
+    <!--javaScript-->
+    <script src="javascript/scriptPaginaAcesso.js"></script>
+
+
+    <!--  \\\\\\Renato//////   -->
+    <script language="JavaScript" src="javascript/scriptIndex.js"></script>
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Página do Usuário</title>
+</head>
+
+<header class="cabecalho">
+    <a href="index.html">
+        <h1>List-Lists</h1>
+    </a>
+</header>
+
+<body>
+
+    <div class="corpoUser">
+
+        <div class="cabecalhoUser">
+            <!--  \\\\\\Renato//////   -->
+            <h1 class="textoTitulo" id="txtH1"></h1>
+            <!--  \\\\\\Renato//////   -->
+            <script>NomeH1();</script>
+            
+            <button type="button" class="btn-lista" data-toggle="modal" data-target="#modalListaFilha" data-whatever="@getbootstrap">Criar Lista</button>
+        </div>
+
+        <!-- Listas criadas pelo usuário -->
+
+        <div>
+            <div class="listasUser container">
+                <p2>Listas Criadas</p2>
+                <ul id="listaCriada">
+                    <!--Nesta ul as listas que forem criadas serão colocadas-->
+                </ul>
+            </div>
+            <!-- Listas criadas pelo usuário -->
+
+            <!-- Listas que o usuário foi convidado-->
+            <div class="listasConvidado container">
+                <p2>Listas Convidado</p2>
+
+                <div class="listasNaLista container">
+                    <p4>Lista de exemplo</p4>
+                </div>
+
+                <div class="listasNaLista container">
+                    <p4>Lista de exemplo</p4>
+                </div>
+            </div>
+        </div>
+        <!-- Listas que o usuário foi convidado-->
+
+        <!-- Modal para a criação de lista (Lista mãe)-->
+        <div class="modal fade" id="modalListaFilha" tabindex="-1" role="dialog" aria-labelledby="modalListaFilhaLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalListaFilhaLabel">Crie sua lista de itens</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="nome-lista" class="col-form-label">Nome da lista:</label>
+                                <input type="text" class="form-control" id="iptNomeLista" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="data-evento" class="col-form-label">Data do evento:</label>
+                                <input type="date" class="form-control" id="iptDataEvento">
+                            </div>
+                            <div class="local-evento">
+                                <label for="hora-do-evento" class="col-form-label">Horário do evento:</label>
+                                <input type="time" class="form-control" id="iptHoraEvento">
+                            </div>
+                            <div class="local-evento">
+                                <label for="data-do-evento" class="col-form-label">Local do evento:</label>
+                                <input type="text" class="form-control" id="iptLocalEvento">
+                            </div>
+                            <div class="form-group">
+                                <label for="observacoes-evento" class="col-form-label">Observações sobre o evento:</label>
+                                <textarea class="form-control" id="textObservacoesEvento"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" id="btn-criarLista" onclick="validarLista()">Criar Lista!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal para a criação de lista-->
+
+        <!--modal da lista filha -->
+        <div class="modal fade" id="abrirModalLista" tabindex="-1" role="dialog" aria-labelledby="modalNomeLista" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalNomeLista">Nome da lista aqui</h5>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="listaModal">
+                        <!--Aqui serão colocadas as informações da lista filha-->
+
+                    </div>
+
+
+                    <div class="modal-body" id="listaItens">
+                        <!--Aqui serão colocadas os itens da lista-->
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" onclick="deletarLista()">Excluir Lista</button>
+                        <button type="button" class="btn btn-info" onclick="adcItem()">Adicionar Item</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--modal da lista filha -->
+
+        <!-- Modal para deletar a lista-->
+        <div class="modal fade" id="modalExcluirLista" tabindex="-1" role="dialog" aria-labelledby="modalExcluirListaLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalExcluirListaLabel">Deseja deletar essa lista?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <button type="button" onclick="confirmaExcluir()" class="btn btn-success">Excluir</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal para deletar a lista-->
+
+        <!--Modal para adicionar itens na Lista Filha -->
+        <div class="modal fade" id="modalAdcItem" tabindex="-1" role="dialog" aria-labelledby="modalAdcItem" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content" id="modalAdcItem">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="">Adicione um item a lista</h5>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="listaModal">
+                        <form>
+                            <div class="form-group">
+                                <label for="nome-lista" class="col-form-label">Item:</label>
+                                <input type="text" class="form-control" id="adcItem">
+                            </div>
+
+                            <div class="form-group">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="nome-lista" class="col-form-label">Quantidade:</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input type="number" class="form-control" id="adcQuantidade">
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <select type="date" class="form-control" id="adcUnidade">
+                                                <option value="Un">Unindade(s)</option>
+                                                <option value="g">Gramas</option>
+                                                <option value="Kg">Quilo(s)</option>
+                                                <option value="Cx">Caixa(s)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nome-lista" class="col-form-label">Marca:</label>
+                                <input type="text" class="form-control" id="adcMarca">
+                            </div>
+                            <div class="form-group">
+                                <label for="nome-lista" class="col-form-label">Encarregado:</label>
+                                <input type="text" class="form-control" id="adcResp">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" onclick="criarNovo()">Pronto!</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Modal de Item adicionado com sucesso-->
+        <div class="modal fade" id="addItem" tabindex="-1" role="dialog" aria-labelledby="modaladdItem" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content" id="modaladdItem">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="">Item adicionado com sucesso</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Abra a lista novamente para atualizar.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Ok!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Modal de Item adicionado com sucesso-->
+    </div>
+
+    <!--javaScript para Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!--javaScript para Bootstrap-->
+</body>
+
+<footer class="roda-pe">
+    <p>© Projeto Desenvolvido pelos alunos Marcelo Seiji e Renato Miranda</p>
+</footer>
+
+</html>
