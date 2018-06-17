@@ -217,3 +217,14 @@ function NomeH1() {
     var element = JSON.parse(tbNome[i]);
     $("#txtH1").text(element.nome);
 }  
+
+///// LIstas
+
+// var contEmail;
+// // Vetor que armazena os objetos
+// var indice_selecionado = -1; //Índice do item selecionado na lista
+// var tbLista = localStorage.getItem("tbLista");// Recupera os dados armazenados
+// tbLista = JSON.parse(tbLista); // Converte string para objeto
+// if (tbLista == null) // Caso não haja conteúdo, iniciamos um vetor vazio
+//     tbLista = [];
+

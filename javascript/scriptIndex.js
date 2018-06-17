@@ -133,10 +133,16 @@ function NomeH1() {
 function Cadastro() {
 
     // Objeto Usuario
-    usuario = JSON.stringify({
+    usuario = JSON.stringify({ 
         nome: $("#txtNome").val(),
         email: $("#txtEmail").val(),
-        senha: $("#txtSenha").val()
+        senha: $("#txtSenha").val(),
+        listaMae: { 
+            nome: 'Ernsp',
+            item:'osjofjsd',
+            quantidade:'osidhfosd',
+            valor:'76767'
+        }
     });
     // Armazenando o objeto na última posição do array
     tbUsuario.push(usuario);
@@ -183,6 +189,40 @@ function Logar(emailParaVerificar, senhaParaVerificar) {
 }
 
 
+// Salvar Obj Session
+function SalvarObjetoSession(emailParaVerificar, senhaParaVerificar) {
+    debugger;
+    for (var i = 0; i < tbUsuario.length; i++) {
+        element = JSON.parse(tbUsuario[i]);
+        var verificarEmail = element.email;
+        var verificarSenha = element.senha;
+        if (verificarEmail == emailParaVerificar) {
+            if (verificarSenha == senhaParaVerificar) {
+
+
+                tbLista = [];
+                sessionStorage.setItem("tbLista", JSON.stringify(tbLista));
+
+                usuario = JSON.stringify({
+                    nome: element.nome,
+                    email: element.email,
+                    listaMae: element.listaMae
+                });
+
+                tbLista.push(usuario);
+                sessionStorage.setItem("tbLista", JSON.stringify(tbLista));
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+
+        }
+    }
+}
+
+
+
 // Varrer email para verificar se o meso já existe
 function VarrerEmailLogar(emailParaVerificar, senhaParaVerificar) {
     debugger;
@@ -192,6 +232,18 @@ function VarrerEmailLogar(emailParaVerificar, senhaParaVerificar) {
         var verificarSenha = element.senha;
         if (verificarEmail == emailParaVerificar) {
             if (verificarSenha == senhaParaVerificar) {
+
+                tbLista = [];
+                sessionStorage.setItem("tbLista", JSON.stringify(tbLista));
+
+                usuario = JSON.stringify({
+                    nome: element.nome,
+                    email: element.email,
+                    listaMae: element.listaMae
+                });
+
+                tbLista.push(usuario);
+                sessionStorage.setItem("tbLista", JSON.stringify(tbLista));
                 return true;
             } else {
                 return false;
@@ -229,6 +281,7 @@ $(document).ready(function () {
         var senhaLog = $('#txtSenhaLog').val();
         if (Logar(emailLog, senhaLog)) {
             alert("Bem Vindo!");
+            SalvarObjetoSession(emailLog, senhaLog);
             window.location.replace("paginaacesso.html");
         } else {
             alert("Email ou senha incorreto!");
