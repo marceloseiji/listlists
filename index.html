@@ -16,6 +16,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" type="text/css" href="css/estiloIndex.css">
 
     <title>List-Lists</title>
@@ -29,76 +31,77 @@
         </a>
     </header>
 
-    <main class="principal">
-        <div class="cadastro">
-            <div class="background">
-                <p>Cadastrar</p>
-                <form class="formulario-cadastro" id="fmrCadastro">
-                    <!-- Nome (cadastro)-->
-                    <label for="txtNome">Nome</label>
-                    <div class="aviso" id="avisoNome">
-                        <span></span>
-                    </div>
-                    <input type="text" name="nome" id="txtNome" placeholder="Informe seu Nome" required>
-                    <br>
+<div class="container">
+    <div class="row">
+        <div class="col cadastro principal background">
+            <p>Cadastrar</p>
+            <form class="formulario-cadastro" id="fmrCadastro">
+                <!-- Nome (cadastro)-->
+                <label for="txtNome">Nome</label>
+                <div class="aviso" id="avisoNome">
+                    <span></span>
+                </div>
+                <input type="text" name="nome" id="txtNome" placeholder="Informe seu Nome" required>
+                <br>
 
-                    <!-- Email (cadastro) -->
-                    <label for="txtEmail">E-mail</label>
-                    <div class="aviso" id="avisoEmail">
-                        <span></span>
-                    </div>
-                    <input type="text" id="txtEmail" placeholder="Informe seu E-mail"/>
-                    <br>
+                <!-- Email (cadastro) -->
+                <label for="txtEmail">E-mail</label>
+                <div class="aviso" id="avisoEmail">
+                    <span></span>
+                </div>
+                <input type="text" id="txtEmail" placeholder="Informe seu E-mail"/>
+                <br>
 
-                    <!-- Senha (cadastro)-->
-                    <label for="txtSenha">Senha</label>
-                    <div class="aviso" id="avisoSenha">
-                        <span></span>
-                    </div>
-                    <input type="password" id="txtSenha" placeholder="Informe seu Senha" required>
-                    <br>
+                <!-- Senha (cadastro)-->
+                <label for="txtSenha">Senha</label>
+                <div class="aviso" id="avisoSenha">
+                    <span></span>
+                </div>
+                <input type="password" id="txtSenha" placeholder="Informe seu Senha" required>
+                <br>
 
-                    <!-- Confirmar Senha (cadastro)-->
-                    <label for="txtConfirmarSenha">Confirmar Senha</label>
-                    <div class="aviso" id="avisoConfirmarSenha">
-                        <span></span>
-                    </div>
-                    <input type="password" id="txtConfirmarSenha" placeholder="Informe sua Senha Novamente" required>
-                    <br>
+                <!-- Confirmar Senha (cadastro)-->
+                <label for="txtConfirmarSenha">Confirmar Senha</label>
+                <div class="aviso" id="avisoConfirmarSenha">
+                    <span></span>
+                </div>
+                <input type="password" id="txtConfirmarSenha" placeholder="Informe sua Senha Novamente" required>
+                <br>
 
-                    <!-- Botão Cadastrar-->
-                    <button type="input" id="btnCadastrar">Cadastrar</button>
-                </form>
-
-            </div>
+                <!-- Botão Cadastrar-->
+                <button type="input" id="btnCadastrar">Cadastrar</button>
+            </form>
         </div>
 
-        <div class="login">
-            <div class="background">
-                <p>Logar</p>
-                <form class="formulario-login" id="log">
-                    <label for="email_log">E-mail</label>
-                    <br>
-                    <input type="text" id="txtEmailLog" placeholder="Informe seu E-mail" required>
-                    <br>
 
-                    <label for="senha_log">Senha</label>
-                    <br>
-                    <input type="password" id="txtSenhaLog" placeholder="Informe sua Senha" password required>
-                    <br>
+        <div class="col login principal background">
+            <p>Logar</p>
+            <form class="formulario-login" id="log">
+                <label for="email_log">E-mail</label>
+                <br>
+                <input type="text" id="txtEmailLog" placeholder="Informe seu E-mail" required>
+                <br>
 
-                    <button type="button" id="btnLogar">Entrar</button>
-                </form>
-            </div>
-        </div>
-    </main>
+                <label for="senha_log">Senha</label>
+                <br>
+                <input type="password" id="txtSenhaLog" placeholder="Informe sua Senha" password required>
+                <br>
+
+                <button type="button" id="btnLogar">Entrar</button>
+            </form>     
+        </div>   
+    </div>
+
+</div>
 
     <footer class="roda-pe">
         <p>© Projeto Desenvolvido pelos alunos Marcelo Seiji e Renato Miranda</p>
     </footer>
 
-
-    <script language="JavaScript" src="javascript/scriptIndex.js"></script>
+<script language="JavaScript" src="javascript/scriptIndex.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 
 </html>

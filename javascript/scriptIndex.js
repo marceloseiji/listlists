@@ -137,12 +137,7 @@ function Cadastro() {
         nome: $("#txtNome").val(),
         email: $("#txtEmail").val(),
         senha: $("#txtSenha").val(),
-        listaMae: { 
-            nome: 'Ernsp',
-            item:'osjofjsd',
-            quantidade:'osidhfosd',
-            valor:'76767'
-        }
+        listaMae: {},
     });
     // Armazenando o objeto na última posição do array
     tbUsuario.push(usuario);
@@ -188,10 +183,8 @@ function Logar(emailParaVerificar, senhaParaVerificar) {
     }
 }
 
-
 // Salvar Obj Session
 function SalvarObjetoSession(emailParaVerificar, senhaParaVerificar) {
-    debugger;
     for (var i = 0; i < tbUsuario.length; i++) {
         element = JSON.parse(tbUsuario[i]);
         var verificarEmail = element.email;
@@ -199,18 +192,17 @@ function SalvarObjetoSession(emailParaVerificar, senhaParaVerificar) {
         if (verificarEmail == emailParaVerificar) {
             if (verificarSenha == senhaParaVerificar) {
 
-
                 tbLista = [];
                 sessionStorage.setItem("tbLista", JSON.stringify(tbLista));
 
                 usuario = JSON.stringify({
                     nome: element.nome,
                     email: element.email,
-                    listaMae: element.listaMae
+                    listaMae: element.listaMae,
                 });
 
                 tbLista.push(usuario);
-                sessionStorage.setItem("tbLista", JSON.stringify(tbLista));
+                sessionStorage.setItem("tbLista", tbLista);
                 return true;
             } else {
                 return false;
@@ -220,12 +212,9 @@ function SalvarObjetoSession(emailParaVerificar, senhaParaVerificar) {
         }
     }
 }
-
-
 
 // Varrer email para verificar se o meso já existe
 function VarrerEmailLogar(emailParaVerificar, senhaParaVerificar) {
-    debugger;
     for (var i = 0; i < tbUsuario.length; i++) {
         element = JSON.parse(tbUsuario[i]);
         var verificarEmail = element.email;
@@ -253,7 +242,6 @@ function VarrerEmailLogar(emailParaVerificar, senhaParaVerificar) {
         }
     }
 }
-
 
 // Varrer email para verificar se o meso já existe
 function VarrerEmail(emailParaVerificar) {
@@ -282,7 +270,7 @@ $(document).ready(function () {
         if (Logar(emailLog, senhaLog)) {
             alert("Bem Vindo!");
             SalvarObjetoSession(emailLog, senhaLog);
-            window.location.replace("paginaacesso.html");
+            window.location.replace("listas/listas.html");
         } else {
             alert("Email ou senha incorreto!");
         }
@@ -302,8 +290,6 @@ $(document).ready(function () {
 });
 
 //#endregion
-
-
 // Funções para serem utilizadas no Console
 //#region 
 // Função Exluir para ser utilizada pelo console -> function Excluir(colocar o nº do indice)

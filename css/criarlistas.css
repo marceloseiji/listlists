@@ -3,7 +3,6 @@
 body{
     font-family: Roboto;
     background-image: url("../img/bg-lista.jpg")
-
 }
 p {
     margin-top: 0;
@@ -32,41 +31,47 @@ p {
  margin: 20px;
 }
 
-.principal p{
-    font-size: 35px;
+.listas{
+    text-align: center;
+    background-color: rgba(39, 41, 36, 0.8);
+    box-shadow: #000 4px 4px 10px;
+    font-size: 25px;
     color: #F2F0F0;
     padding: 5px;
-    margin: 15px 0 15px 0;
+    margin: 15px;
     display: inline-block;
+    margin-top: 100px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
-/* -- Formulário de Cadastro -- */
-
-.cadastro{
-    width: 65%;
-    float: left;
-    padding: 50px;
-    text-align: center;
-}
-
-.background{
-    background-color: rgba(39, 41, 36, 0.6);
-    box-shadow: #000 4px 4px 10px;
-}
-
-.formulario-cadastro input{
+.btnCriar{
+    font-size: 20px;
+    margin: 15px;
+    min-width: 100px;
+    width: 20%;
     padding: 5px;
+    border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #E6EED6;
+}
+
+.btnCriar:hover{
+    background-color: rgba(0, 0, 0, 0.8);;
+}
+
+input{
     margin-bottom: 15px;
     width: 60%;
     border: none;
     border-bottom: solid 2px #fff;
     background: none;
     color: #fff;
+    font-size: 18px;
 }
-
-.formulario-cadastro label{
-    font-size: 23px;
-    color: #F2F0F0;
+label{
+    font-size: 20px;
+    margin-bottom: 0px;
 }
 
 .formulario-cadastro button{
@@ -84,58 +89,14 @@ p {
     background-color: rgba(0, 0, 0, 0.8);;
 }
 
-.aviso{
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 14px; 
-    font: bolder;
-    display: block;
-    position: relative;
-}
-
-/* -- Formulário de Login -- */
-
-.login{
-    width: 35%;
-    float: left;
-    padding: 50px;
-    text-align: center;
-}
-
-.formulario-login input{
-    color: #fff;
-    padding: 5px;
-    margin-bottom: 15px;
-    width: 60%;
-    background: none;
-    border: none;
-    border-bottom: solid 2px #fff;
-}
-
-.formulario-login label{
-    font-size: 23px;
-    color: #F2F0F0;
-}
-
-.formulario-login button{
-    font-size: 20px;
-    margin-bottom: 15px;
-    min-width: 100px;
-    width: 40%;
-    padding: 5px;
-    border: 2px solid black;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #E6EED6;
-}
-
-.formulario-login button:hover{
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
 /* -- Roda Pé -- */
 .roda-pe{
+    width: 100%;
     background-color: rgba(39, 41, 36, .9);
     padding: 10px;
     text-align: center;
+    position: fixed;
+    top: 900px;
 }
 
 .roda-pe p{
