@@ -137,6 +137,9 @@ p {
     background-color: rgba(39, 41, 36, .9);
     padding: 10px;
     text-align: center;
+    position: fixed;
+    top: 900px;
+    width: 100%;
 }
 
 .roda-pe p{
