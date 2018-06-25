@@ -11,13 +11,6 @@ var tbUsuario = localStorage.getItem("tbUsuario");// Recupera os dados armazenad
 tbUsuario = JSON.parse(tbUsuario); // Converte string para objeto
 if (tbUsuario == null) // Caso não haja conteúdo, iniciamos um vetor vazio
     tbUsuario = [];
-
-// Variaveis para salvar o nome de quem logar no localstorage
-var nomeUsuH1 = "";
-var tbNome = localStorage.getItem("tbNome");// Recupera os dados armazenados
-tbNome = JSON.parse(tbNome); // Converte string para objeto
-if (tbNome == null) // Caso não haja conteúdo, iniciamos um vetor vazio
-    tbNome = [];
 //#endregion
 
 // Funções de Validação de Campos
@@ -47,46 +40,45 @@ function checkMail(mail) {
     }
 }
 
-$(document).ready(function () {
-    // Valida Campo Nome
-    $('#txtNome').on('change', function () {
-        var textoValida = $('#txtNome').val();
-        if (isNumber(textoValida) && textoValida.length > 2) {
-            $("#txtNome").css("border-bottom", "solid 3px green");
-            $("#avisoNome").css("color", "green").text("CAMPO PREENCHIDO CORRETAMENTE");
-            contNome = true;
-        } else {
-            $("#txtNome").focus().css("border-bottom", "solid 3px red");
-            $("#avisoNome").css("color", "red").text("APENAS LETRAS");
-            contNome = false;
-        }
-    });
+// Valida Campo Nome
+$('#txtNome').on('change', function () {
+    var textoValida = $('#txtNome').val();
+    if (isNumber(textoValida) && textoValida.length > 2) {
+        $("#txtNome").css("border-bottom", "solid 3px green");
+        $("#avisoNome").css("color", "green").text("CAMPO PREENCHIDO CORRETAMENTE");
+        contNome = true;
+    } else {
+        $("#txtNome").focus().css("border-bottom", "solid 3px red");
+        $("#avisoNome").css("color", "red").text("APENAS LETRAS");
+        contNome = false;
+    }
+});
 
-    // Valida Campo Email
-    $('#txtEmail').on('change', function () {
-        var textoValida = $('#txtEmail').val();
+// Valida Campo Email
+$('#txtEmail').on('change', function () {
+    var textoValida = $('#txtEmail').val();
 
-        if (checkMail(textoValida)) {
-            $("#txtEmail").css("border-bottom", "solid 3px green");
-            $("#avisoEmail").css("color", "green").text("CAMPO PREENCHIDO CORRETAMENTE");
+    if (checkMail(textoValida)) {
+        $("#txtEmail").css("border-bottom", "solid 3px green");
+        $("#avisoEmail").css("color", "green").text("CAMPO PREENCHIDO CORRETAMENTE");
 
-            if (VarrerEmail(textoValida) === false) {
-                $("#txtEmail").focus().css("border-bottom", "solid 3px red");
-                $("#avisoEmail").css("color", "red").text("EMAIL JÁ CADASTRADO");
-                contEmail = false;
-            } else {
-                $("#txtEmail").css("border-bottom", "solid 3px green");
-                $("#avisoEmail").css("color", "green").text("E-MAIL VÁLIDO");
-                contEmail = true;
-
-            }
-
-        } else {
+        if (VarrerEmail(textoValida) === false) {
             $("#txtEmail").focus().css("border-bottom", "solid 3px red");
-            $("#avisoEmail").css("color", "red").text("E-MAIL IVÁLIDO");
+            $("#avisoEmail").css("color", "red").text("EMAIL JÁ CADASTRADO");
             contEmail = false;
+        } else {
+            $("#txtEmail").css("border-bottom", "solid 3px green");
+            $("#avisoEmail").css("color", "green").text("E-MAIL VÁLIDO");
+            contEmail = true;
+
         }
-    });
+
+    } else {
+        $("#txtEmail").focus().css("border-bottom", "solid 3px red");
+        $("#avisoEmail").css("color", "red").text("E-MAIL IVÁLIDO");
+        contEmail = false;
+    }
+});
 
     // Valida Campo Senha
     $('#txtSenha').on('change', function () {
@@ -116,63 +108,36 @@ $(document).ready(function () {
             contConfirmarSenha = false;
         }
     });
-});
+
 //#endregion
 
 // Métodos
 //#region 
-
-// Função para Mostrar o nome da pessoa logada
-function NomeH1() {
-    var i = 0;
-    element = JSON.parse(tbNome[i]);
-    $("#txtH1").text(element.nome);
-}  
-
+ 
 // Função Cadastrar Usuario
 function Cadastro() {
 
     // Objeto Usuario
-    usuario = JSON.stringify({ 
+    usuario = { 
         nome: $("#txtNome").val(),
         email: $("#txtEmail").val(),
         senha: $("#txtSenha").val(),
-        listaMae: {},
-    });
+        listaMae: [],
+    };
     // Armazenando o objeto na última posição do array
     tbUsuario.push(usuario);
     localStorage.setItem("tbUsuario", JSON.stringify(tbUsuario));
-}
-
-// Função para excluir nomes no localstorage
-function ExcluirTudoNome() {
-    tbNome = [];
-    localStorage.setItem("tbNome", JSON.stringify(tbNome));
-}
-
-// Função para incluir nomes no localstorage
-function GravarNome(nomeUsuario) {
-
-    ExcluirTudoNome()
-
-    usuario = JSON.stringify({
-        nome: nomeUsuario
-    });
-    // Armazenando o objeto na última posição do array
-    tbNome.push(usuario);
-    localStorage.setItem("tbNome", JSON.stringify(tbNome));
 }
 
 // Varrer Email e senha para logar
 function Logar(emailParaVerificar, senhaParaVerificar) {
 
     for (var i = 0; i < tbUsuario.length; i++) {
-        element = JSON.parse(tbUsuario[i]);
+        element = tbUsuario[i];
         var verificarEmail = element.email;
         var verificarSenha = element.senha;
         if (verificarEmail == emailParaVerificar) {
             if (verificarSenha == senhaParaVerificar) {
-                GravarNome(element.nome);
                 return true;
             } else {
                 return false;
@@ -182,24 +147,38 @@ function Logar(emailParaVerificar, senhaParaVerificar) {
         }
     }
 }
-
-// Salvar Obj Session
+                    
+// Coloca usuário logado no session
 function SalvarObjetoSession(emailParaVerificar, senhaParaVerificar) {
     for (var i = 0; i < tbUsuario.length; i++) {
-        element = JSON.parse(tbUsuario[i]);
+        element = tbUsuario[i];
+        var verificarEmail = element.email;
+        var verificarSenha = element.senha;
+        if (verificarEmail == emailParaVerificar && verificarSenha == senhaParaVerificar) {
+            element = JSON.stringify(element);
+            sessionStorage.setItem("usuarioLogado", element);
+
+        }else {}
+    }
+}
+
+// Varrer email para verificar se o mesmo já existe
+function VarrerEmailLogar(emailParaVerificar, senhaParaVerificar) {
+    for (var i = 0; i < tbUsuario.length; i++) {
+        element = tbUsuario[i];
         var verificarEmail = element.email;
         var verificarSenha = element.senha;
         if (verificarEmail == emailParaVerificar) {
             if (verificarSenha == senhaParaVerificar) {
 
                 tbLista = [];
-                sessionStorage.setItem("tbLista", JSON.stringify(tbLista));
+                sessionStorage.setItem("tbLista", tbLista);
 
-                usuario = JSON.stringify({
+                usuario = {
                     nome: element.nome,
                     email: element.email,
-                    listaMae: element.listaMae,
-                });
+                    listaMae: element.listaMae
+                };
 
                 tbLista.push(usuario);
                 sessionStorage.setItem("tbLista", tbLista);
@@ -213,41 +192,11 @@ function SalvarObjetoSession(emailParaVerificar, senhaParaVerificar) {
     }
 }
 
-// Varrer email para verificar se o meso já existe
-function VarrerEmailLogar(emailParaVerificar, senhaParaVerificar) {
-    for (var i = 0; i < tbUsuario.length; i++) {
-        element = JSON.parse(tbUsuario[i]);
-        var verificarEmail = element.email;
-        var verificarSenha = element.senha;
-        if (verificarEmail == emailParaVerificar) {
-            if (verificarSenha == senhaParaVerificar) {
-
-                tbLista = [];
-                sessionStorage.setItem("tbLista", JSON.stringify(tbLista));
-
-                usuario = JSON.stringify({
-                    nome: element.nome,
-                    email: element.email,
-                    listaMae: element.listaMae
-                });
-
-                tbLista.push(usuario);
-                sessionStorage.setItem("tbLista", JSON.stringify(tbLista));
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-
-        }
-    }
-}
-
-// Varrer email para verificar se o meso já existe
+// Varrer email para verificar se o mesmo já existe
 function VarrerEmail(emailParaVerificar) {
 
     for (var i = 0; i < tbUsuario.length; i++) {
-        element = JSON.parse(tbUsuario[i]);
+        element = tbUsuario[i];
         //console.log(element.email);
 
         //console.log(emailParaVerificar);
@@ -263,7 +212,7 @@ function VarrerEmail(emailParaVerificar) {
 // Chamando os Botões
 //#region 
 // Chamando o Botão de LOGIN
-$(document).ready(function () {
+
     $("#btnLogar").click(function () {
         var emailLog = $('#txtEmailLog').val();
         var senhaLog = $('#txtSenhaLog').val();
@@ -272,22 +221,20 @@ $(document).ready(function () {
             SalvarObjetoSession(emailLog, senhaLog);
             window.location.replace("listas/listas.html");
         } else {
-            alert("Email ou senha incorreto!");
+            alert("Email ou senha incorretos!");
         }
     });
-});
 
 // Chamando o Botão de cadastro
-$(document).ready(function () {
+
     $("#btnCadastrar").click(function () {
         if (contNome && contEmail && contSenha && contConfirmarSenha) {
             Cadastro();
             alert("Cadastro realizado com Sucesso!");
         } else {
-            alert("Cadastro não realizado.\nVerefique os campos!");
+            alert("Cadastro não realizado. Verifique os campos!");
         }
     });
-});
 
 //#endregion
 // Funções para serem utilizadas no Console
@@ -295,14 +242,14 @@ $(document).ready(function () {
 // Função Exluir para ser utilizada pelo console -> function Excluir(colocar o nº do indice)
 function Excluir(n) {
     tbUsuario.splice(indice_selecionado, n);
-    localStorage.setItem("tbUsuario", JSON.stringify(tbUsuario));
+    localStorage.setItem("tbUsuario", tbUsuario);
     console.log("Usuário " + n + " excluído.");
 }
 
 // Função para deletear e limpar o local storage. Usar pelo console -> function ExcluirTudo() 
 function ExcluirTudo() {
     tbUsuario = [];
-    localStorage.setItem("tbUsuario", JSON.stringify(tbUsuario));
+    localStorage.setItem("tbUsuario", tbUsuario);
     console.log("Tabela de usuários excluídas.");
 }
 

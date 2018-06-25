@@ -17,41 +17,167 @@
     
     <link rel="stylesheet" type="text/css" href="../css/listas.css">
 
-    <script src="../javascript/listas.js"></script>
     <script src="../javascript/scriptIndex.js"></script>
-
+    <script src="../javascript/criarlistas.js"></script>
+    <script src="../javascript/listas.js"></script>
+    
     <title>List-Lists</title>
 
 </head>
 
 <body>
     <header class="cabecalho">
-        <a href="../index.html"></a>
-            <h1>List-Lists</h1></br>
-            <p3>Usuário:</p3>
-            <p3 id="nomeUsuario"></p3> </br>
-            <p3>Status:</p3>
-            <p3 class="p3v">Logado</p3>
+        <a href="../index.html"><h1>List-Lists</h1></a></br>
+        <p3>Usuário:</p3>
+        <p3 id="nomeUsuario"></p3> </br>
+        <p3>Status:</p3>
+        <p3 class="p3v">Logado</p3>
     </header>
 
 <div class="container">
 
     <div class="row text-center">
         <div class="col">
-            <button type="input" class="btnCriar" id="btnCriar" onclick="criarLista()">Criar Lista!</button>
-        </div>
-    </div> 
-
-    <div class="row">
-        <div class="col listas">
-            <p>Cadastrar</p>
+            <button type="input" class="btn btn-danger" id="btnCriar" data-toggle="modal" data-target="#modalDeslogar">Deslogar</button>
+            <button type="input" class="btn btn-primary" id="btnCriar" onclick="criarLista()">Criar Lista!</button>
         </div>
     </div>
-    
-    <div class="row">
-        <div class="col listas">
-            <p>Convidado</p>
+
+    <div class="row text-center">
+        <div class="col">
+            <p class="titulos">Listas Criadas</p>
         </div>
+    </div>
+
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col" style="width: 5%">#</th>
+                <th scope="col">Evento</th>
+                <th scope="col">Local</th>
+                <th scope="col">Data</th>
+                <th scope="col">Horário</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+
+        <tbody id="tabelaListas">
+          <tr>
+
+          </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Modal para deslogar -->
+<div class="modal fade" id="modalDeslogar" tabindex="-1" role="dialog" aria-labelledby="modalDeslogarLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+            <h5 class="modal-title" id="modalDeslogarLabel">Aviso</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+
+            <div class="modal-body">
+            Deseja realmente deslogar do sistema?
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+            <button type="button" class="btn btn-success" onclick="deslogar()">Sim</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Modal dos Itens-->
+<div class="modal fade" id="itensDaLista" tabindex="-1" role="dialog" aria-labelledby="itensDaListaLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg" role="document">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="itensDaListaLabel">Itens</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-itens">
+
+                        <div class="form-group">
+                            <label for="nome-lista" class="col-form-label">Item:</label>
+                            <input type="text" class="form-control" id="adcItem">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="nome-lista" class="col-form-label">Quantidade:</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="number" class="form-control" id="adcQuantidade">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <select type="date" class="form-control" id="adcUnidade">
+                                            <option value="Un">Unindade(s)</option>
+                                            <option value="g">Gramas</option>
+                                            <option value="Kg">Quilo(s)</option>
+                                            <option value="Cx">Caixa(s)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                        <label for="nome-lista" class="col-form-label">Marca:</label>
+                        <input type="text" class="form-control" id="adcMarca">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nome-lista" class="col-form-label">Encarregado:</label>
+                        <input type="text" class="form-control" id="adcResp">
+                    </div>
+
+                </form>
+            </div>
+
+            <table class="table table-sm mini-tabela table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Quant.</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Resp.</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaItens">
+
+                </tbody>
+            </table>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="addItem()">Adicionar Item</button>
+            </div>
+
+        </div>
+
     </div>
 
 </div>

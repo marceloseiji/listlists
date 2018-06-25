@@ -2,7 +2,9 @@
 /* -- Body --*/
 body{
     font-family: Roboto;
-    background-image: url("../img/bg-lista.jpg")
+    background-image: url("../img/bg-lista.jpg");
+    background-position: center;
+    background-attachment: fixed;
 }
 p {
     margin-top: 0;
