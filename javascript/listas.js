@@ -121,9 +121,6 @@ function delItem(x) {
                 usuarioLogadoAtualizado = JSON.stringify(usuarioLogadoAtualizado);
                 localStorage.setItem("tbUsuario", usuarioLogadoAtualizado);
 
-                $("#itensDaLista").on("hidden.bs.modal", function(){   //Atualiza a página ao fechar o modal para retirar o erro que a remoção causa
-
-                });
             };
         };
     };

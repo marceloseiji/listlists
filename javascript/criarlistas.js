@@ -8,7 +8,6 @@ function lista() {
 };
 
 //Função que cria o objeto na lista mãe
-
 function salvarLista(nomeEvento, localEvento, dataEvento, localEvento, horaEvento) {
     objLista = new lista (nomeEvento, localEvento, dataEvento, horaEvento); //Variável que é jogada para o objeto listasCriadas = {}
 
